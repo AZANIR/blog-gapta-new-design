@@ -9,14 +9,14 @@ import mat2          from '../assets/images/mat-2.png';
 import mat3          from '../assets/images/mat-3.png';
 import mat4          from '../assets/images/mat-4.png';
 import ctaFloral     from '../assets/cta-floral.png';
-import work1 from '../assets/images/works/work-1.png';
-import work2 from '../assets/images/works/work-2.png';
-import work3 from '../assets/images/works/work-3.png';
-import work4 from '../assets/images/works/work-4.png';
-import work5 from '../assets/images/works/work-5.png';
-import work6 from '../assets/images/works/work-6.png';
-import work7 from '../assets/images/works/work-7.png';
-import work8 from '../assets/images/works/work-8.png';
+import work1 from '../assets/images/works/work-1.jpg';
+import work2 from '../assets/images/works/work-2.jpg';
+import work3 from '../assets/images/works/work-3.jpg';
+import work4 from '../assets/images/works/work-4.jpg';
+import work5 from '../assets/images/works/work-5.jpg';
+import work6 from '../assets/images/works/work-6.jpg';
+import work7 from '../assets/images/works/work-7.jpg';
+import work8 from '../assets/images/works/work-8.jpg';
 
 // Галерея «Обрані роботи»: порядок карток у каруселі
 const works = [
@@ -284,7 +284,7 @@ const heroPreload = await getImage({ src: heroShield, width: 1440, height: 900, 
           <div class="pf-track" style="display:flex;transition:transform .6s ease;">
             {works.map((w) => (
               <div class="pf-slide" style="flex:0 0 20%;aspect-ratio:1/1;box-sizing:border-box;border:1px solid var(--gold-2);background-color:var(--navy-800);overflow:hidden;position:relative;">
-                <Image src={w.img} alt={w.alt} width={512} height={512} loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+                <Image src={w.img} alt={w.alt} width={640} height={640} loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
               </div>
             ))}
           </div>
