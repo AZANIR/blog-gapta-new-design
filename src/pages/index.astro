@@ -279,7 +279,7 @@ const heroPreload = await getImage({ src: heroShield, width: 1440, height: 900, 
         <p style="margin-top:24px;font-size:12px;line-height:1.65;color:var(--cream);">Кожен проєкт — це унікальне рішення,<br>створене з увагою до стилю та характеру бренду.</p>
         <a href="#portfolio" style="margin-top:10px;display:inline-flex;align-items:center;gap:14px;color:var(--gold-2);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;font-weight:200;">Дивитися всі роботи →</a>
       </div>
-      <div class="pf-carousel" data-autoplay-ms="3000" style="position:relative;">
+      <div class="pf-carousel" data-autoplay-ms="5000" style="position:relative;">
         <div style="overflow:hidden;">
           <div class="pf-track" style="display:flex;transition:transform .6s ease;">
             {works.map((w) => (
@@ -309,7 +309,7 @@ const heroPreload = await getImage({ src: heroShield, width: 1440, height: 900, 
       }
     </style>
     <script>
-      // Карусель «Обрані роботи»: автопрокрутка кожні data-autoplay-ms (за замовчуванням 3000 мс).
+      // Карусель «Обрані роботи»: автопрокрутка кожні data-autoplay-ms (за замовчуванням 5000 мс).
       // Щоб змінити інтервал — змініть значення атрибута data-autoplay-ms у розмітці секції.
       const carousel = document.querySelector<HTMLElement>('.pf-carousel');
       if (carousel) {
@@ -317,7 +317,7 @@ const heroPreload = await getImage({ src: heroShield, width: 1440, height: 900, 
         if (!track) throw new Error('pf-track not found');
         const slides = Array.from(track.children) as HTMLElement[];
         const total = slides.length;
-        const autoplayMs = Number(carousel.dataset.autoplayMs) || 3000;
+        const autoplayMs = Number(carousel.dataset.autoplayMs) || 5000;
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         // Клони слайдів у кінець — для безшовного зациклювання
