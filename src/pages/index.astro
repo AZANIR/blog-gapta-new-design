@@ -9,6 +9,26 @@ import mat2          from '../assets/images/mat-2.png';
 import mat3          from '../assets/images/mat-3.png';
 import mat4          from '../assets/images/mat-4.png';
 import ctaFloral     from '../assets/cta-floral.png';
+import work1 from '../assets/images/works/work-1.jpg';
+import work2 from '../assets/images/works/work-2.jpg';
+import work3 from '../assets/images/works/work-3.jpg';
+import work4 from '../assets/images/works/work-4.jpg';
+import work5 from '../assets/images/works/work-5.jpg';
+import work6 from '../assets/images/works/work-6.jpg';
+import work7 from '../assets/images/works/work-7.jpg';
+import work8 from '../assets/images/works/work-8.jpg';
+
+// Галерея «Обрані роботи»: порядок карток у каруселі
+const works = [
+  { img: work1, alt: 'Машинна вишивка золотого квіткового орнаменту на темно-синій тканині' },
+  { img: work2, alt: 'Вишита нашивка-ромашка на лляній тканині' },
+  { img: work3, alt: 'Золота монограма на темно-синьому велюрі' },
+  { img: work4, alt: 'Лляна скатертина з машинною вишивкою' },
+  { img: work5, alt: 'Вишита нашивка для туристичного бренду: гора та компас' },
+  { img: work6, alt: 'Нашивки та бірки «ГАПТА»' },
+  { img: work7, alt: 'Ботанічний орнамент золотою ниткою на темно-синій тканині' },
+  { img: work8, alt: 'Вишитий гербовий щит із тризубцем' },
+];
 
 // Pre-generate optimized URL for <link rel="preload"> in <head>
 // so the browser discovers the LCP image before it parses CSS
@@ -259,42 +279,94 @@ const heroPreload = await getImage({ src: heroShield, width: 1440, height: 900, 
         <p style="margin-top:24px;font-size:12px;line-height:1.65;color:var(--cream);">Кожен проєкт — це унікальне рішення,<br>створене з увагою до стилю та характеру бренду.</p>
         <a href="#portfolio" style="margin-top:10px;display:inline-flex;align-items:center;gap:14px;color:var(--gold-2);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;font-weight:200;">Дивитися всі роботи →</a>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;">
-        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background-color:var(--navy-800);overflow:hidden;position:relative;">
-          <Image src={heroShield} alt="" width={350} height={350} loading="lazy" style="position:absolute;width:220%;height:auto;top:50%;left:-36%;transform:translateY(-50%);display:block;" />
+      <div class="pf-carousel" data-autoplay-ms="5000" style="position:relative;">
+        <div style="overflow:hidden;">
+          <div class="pf-track" style="display:flex;transition:transform .6s ease;">
+            {works.map((w) => (
+              <div class="pf-slide" style="flex:0 0 20%;aspect-ratio:1/1;box-sizing:border-box;border:1px solid var(--gold-2);background-color:var(--navy-800);overflow:hidden;position:relative;">
+                <Image src={w.img} alt={w.alt} width={640} height={640} loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
+              </div>
+            ))}
+          </div>
         </div>
-        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background:var(--cream-3);display:flex;align-items:center;justify-content:center;overflow:hidden;">
-          <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:38px;color:var(--navy-900);">Сапта</span>
-        </div>
-        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background:linear-gradient(135deg,#1a2438 0%,#0a1224 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;">
-          <span style="color:var(--cream);font-family:'Manrope',sans-serif;font-size:13px;letter-spacing:0.24em;text-transform:uppercase;font-weight:600;text-align:center;padding:0 14px;">Your<br>Brand</span>
-        </div>
-        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background:linear-gradient(135deg,#0a1224 0%,#1a2b4a 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;">
-          <span style="color:var(--cream);font-family:'Manrope',sans-serif;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;line-height:1.3;text-align:center;padding:0 14px;">Mountain<br>Expedition</span>
-        </div>
-        <div style="aspect-ratio:1/1;border:1px solid var(--gold-2);background-color:var(--navy-800);overflow:hidden;position:relative;">
-          <Image src={heroMachine} alt="" width={350} height={350} loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" />
-        </div>
-        <button aria-label="Попередній" style="position:absolute;top:50%;transform:translateY(-50%);left:-22px;width:44px;height:44px;border-radius:50%;background:var(--navy-900);border:1px solid var(--gold-2);display:flex;align-items:center;justify-content:center;color:var(--gold-2);font-size:18px;cursor:pointer;z-index:5;">‹</button>
-        <button aria-label="Наступний" style="position:absolute;top:50%;transform:translateY(-50%);right:-22px;width:44px;height:44px;border-radius:50%;background:var(--navy-900);border:1px solid var(--gold-2);display:flex;align-items:center;justify-content:center;color:var(--gold-2);font-size:18px;cursor:pointer;z-index:5;">›</button>
+        <button class="pf-arrow pf-arrow-left" aria-label="Попередній" style="position:absolute;top:50%;transform:translateY(-50%);left:-22px;width:44px;height:44px;border-radius:50%;background:var(--navy-900);border:1px solid var(--gold-2);display:flex;align-items:center;justify-content:center;color:var(--gold-2);font-size:18px;cursor:pointer;z-index:5;">‹</button>
+        <button class="pf-arrow pf-arrow-right" aria-label="Наступний" style="position:absolute;top:50%;transform:translateY(-50%);right:-22px;width:44px;height:44px;border-radius:50%;background:var(--navy-900);border:1px solid var(--gold-2);display:flex;align-items:center;justify-content:center;color:var(--gold-2);font-size:18px;cursor:pointer;z-index:5;">›</button>
       </div>
     </div>
     <style>
       @media (max-width: 1100px) {
         #portfolio { padding: 60px 36px !important; }
         #portfolio > div { grid-template-columns: 1fr !important; gap: 36px !important; }
-        #portfolio > div > div:last-child { grid-template-columns: repeat(4,1fr) !important; }
-        #portfolio > div > div:last-child > div:nth-child(5) { display: none !important; }
-        #portfolio > div > div:last-child button.pf-arrow-left { left: 12px !important; }
+        #portfolio .pf-slide { flex-basis: 25% !important; }
+        #portfolio .pf-arrow-left { left: 12px !important; }
+        #portfolio .pf-arrow-right { right: 12px !important; }
       }
       @media (max-width: 640px) {
         #portfolio { padding: 50px 22px !important; }
         #portfolio > div > div:first-child h2 { font-size: 28px !important; }
-        #portfolio > div > div:last-child { grid-template-columns: repeat(2,1fr) !important; gap: 10px !important; }
-        #portfolio > div > div:last-child > div:nth-child(n+5) { display: none !important; }
-        #portfolio > div > div:last-child button { display: none !important; }
+        #portfolio .pf-slide { flex-basis: 50% !important; }
+        #portfolio .pf-arrow { display: none !important; }
       }
     </style>
+    <script>
+      // Карусель «Обрані роботи»: автопрокрутка кожні data-autoplay-ms (за замовчуванням 5000 мс).
+      // Щоб змінити інтервал — змініть значення атрибута data-autoplay-ms у розмітці секції.
+      const carousel = document.querySelector<HTMLElement>('.pf-carousel');
+      if (carousel) {
+        const track = carousel.querySelector<HTMLElement>('.pf-track');
+        if (!track) throw new Error('pf-track not found');
+        const slides = Array.from(track.children) as HTMLElement[];
+        const total = slides.length;
+        const autoplayMs = Number(carousel.dataset.autoplayMs) || 5000;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // Клони слайдів у кінець — для безшовного зациклювання
+        slides.forEach((s) => {
+          const clone = s.cloneNode(true) as HTMLElement;
+          clone.setAttribute('aria-hidden', 'true');
+          track.appendChild(clone);
+        });
+
+        let index = 0;
+        let timer: number | null = null;
+
+        const render = () => {
+          const w = track.children[0].getBoundingClientRect().width;
+          track.style.transform = `translateX(${-index * w}px)`;
+        };
+        const snap = () => {
+          track.style.transition = 'none';
+          render();
+          void track.offsetWidth;
+          track.style.transition = '';
+        };
+        const next = () => { index++; render(); };
+        const prev = () => {
+          if (index === 0) { index = total; snap(); }
+          index--; render();
+        };
+
+        track.addEventListener('transitionend', (e) => {
+          if (e.propertyName !== 'transform') return;
+          if (index >= total) { index -= total; snap(); }
+        });
+
+        const start = () => { if (!reduceMotion && !timer) timer = setInterval(next, autoplayMs); };
+        const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+        const restart = () => { stop(); start(); };
+
+        carousel.querySelector<HTMLButtonElement>('.pf-arrow-right')!.addEventListener('click', () => { next(); restart(); });
+        carousel.querySelector<HTMLButtonElement>('.pf-arrow-left')!.addEventListener('click', () => { prev(); restart(); });
+        carousel.addEventListener('mouseenter', stop);
+        carousel.addEventListener('mouseleave', () => { if (!carousel.contains(document.activeElement)) start(); });
+        carousel.addEventListener('focusin', stop);
+        carousel.addEventListener('focusout', start);
+        window.addEventListener('resize', snap);
+
+        render();
+        start();
+      }
+    </script>
   </section>
 
   <!-- ============ TRUST ============ -->
