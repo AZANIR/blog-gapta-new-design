@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/azanir/gapta:latest
+          tags: ghcr.io/azanir/blog-gapta-new-design:latest
 
       - name: Deploy to Hetzner
         uses: appleboy/ssh-action@v1
@@ -41,13 +41,13 @@ jobs:
           envs: GITHUB_TOKEN,GITHUB_ACTOR
           script: |
             echo "$GITHUB_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
-            docker pull ghcr.io/azanir/gapta:latest
-            docker stop blog-gapta 2>/dev/null || true
-            docker rm blog-gapta 2>/dev/null || true
+            docker pull ghcr.io/azanir/blog-gapta-new-design:latest
+            docker stop blog-gapta-new-design 2>/dev/null || true
+            docker rm blog-gapta-new-design 2>/dev/null || true
             docker network create web 2>/dev/null || true
             docker run -d \
-              --name blog-gapta \
+              --name blog-gapta-new-design \
               --restart unless-stopped \
               --network web \
-              ghcr.io/azanir/gapta:latest
+              ghcr.io/azanir/blog-gapta-new-design:latest
             docker image prune -f
